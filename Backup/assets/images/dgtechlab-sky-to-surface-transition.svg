@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 520" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="skyToSurface" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BFD8FF" stop-opacity="0"/>
+      <stop offset="0.18" stop-color="#DCEBFF" stop-opacity="0.22"/>
+      <stop offset="0.42" stop-color="#EEF6FF" stop-opacity="0.62"/>
+      <stop offset="0.72" stop-color="#F5FAFF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FBFDFF" stop-opacity="1"/>
+    </linearGradient>
+
+    <radialGradient id="violetNebula" cx="26%" cy="24%" r="52%">
+      <stop offset="0" stop-color="#635BFF" stop-opacity="0.1"/>
+      <stop offset="0.38" stop-color="#635BFF" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#635BFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="cyanNebula" cx="72%" cy="46%" r="56%">
+      <stop offset="0" stop-color="#00D2FF" stop-opacity="0.12"/>
+      <stop offset="0.42" stop-color="#00D2FF" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#00D2FF" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="surfaceGlow" cx="50%" cy="86%" r="78%">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.88"/>
+      <stop offset="0.42" stop-color="#EEF6FF" stop-opacity="0.68"/>
+      <stop offset="1" stop-color="#EEF6FF" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="aurora" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#635BFF" stop-opacity="0"/>
+      <stop offset="0.34" stop-color="#635BFF" stop-opacity="0.08"/>
+      <stop offset="0.52" stop-color="#00D2FF" stop-opacity="0.09"/>
+      <stop offset="0.76" stop-color="#ECE8FF" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#ECE8FF" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="softBlur">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+    <linearGradient id="edgeAlpha" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.16" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="0.38" stop-color="#FFFFFF" stop-opacity="0.88"/>
+      <stop offset="0.62" stop-color="#FFFFFF" stop-opacity="0.88"/>
+      <stop offset="0.84" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <mask id="edgeFade">
+      <rect width="1920" height="520" fill="url(#edgeAlpha)"/>
+    </mask>
+  </defs>
+
+  <g mask="url(#edgeFade)">
+    <rect width="1920" height="520" fill="url(#skyToSurface)"/>
+    <rect width="1920" height="520" fill="url(#violetNebula)" filter="url(#softBlur)"/>
+    <rect width="1920" height="520" fill="url(#cyanNebula)" filter="url(#softBlur)"/>
+    <rect width="1920" height="520" fill="url(#aurora)" filter="url(#softBlur)" opacity="0.88"/>
+    <rect width="1920" height="520" fill="url(#surfaceGlow)"/>
+
+    <g opacity="0.42">
+      <circle cx="214" cy="92" r="1.2" fill="#FFFFFF"/>
+      <circle cx="432" cy="146" r="0.9" fill="#DFF9FF"/>
+      <circle cx="690" cy="76" r="1.1" fill="#FFFFFF"/>
+      <circle cx="894" cy="166" r="0.8" fill="#ECE8FF"/>
+      <circle cx="1168" cy="98" r="1.1" fill="#FFFFFF"/>
+      <circle cx="1450" cy="138" r="0.9" fill="#DFF9FF"/>
+      <circle cx="1698" cy="84" r="1.2" fill="#FFFFFF"/>
+    </g>
+  </g>
+</svg>
