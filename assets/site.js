@@ -112,6 +112,73 @@ function setupMobileMenu() {
   });
 }
 
+function setupHeaderFirefly() {
+  const header = document.querySelector(".site-header");
+  const firefly = document.querySelector(".header-firefly");
+  const navItems = [...document.querySelectorAll(".nav a:not(.nav-cta)")];
+  if (!header || !firefly || !navItems.length || reduceMotion) return;
+
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  if (coarsePointer) return;
+
+  const root = document.documentElement;
+  let targetX = window.innerWidth / 2;
+  let targetY = 48;
+  let currentX = targetX;
+  let currentY = targetY;
+  let isNearHeader = false;
+  let animationId = 0;
+
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+  const updateTarget = (event) => {
+    targetX = event.clientX;
+    targetY = event.clientY;
+  };
+
+  const illuminateMenu = () => {
+    isNearHeader = false;
+
+    navItems.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const distance = Math.hypot(currentX - centerX, currentY - centerY);
+      const glow = clamp(1 - distance / 135, 0, 1);
+      const itemX = clamp(((currentX - rect.left) / rect.width) * 100, 0, 100);
+      const itemY = clamp(((currentY - rect.top) / rect.height) * 100, 0, 100);
+
+      item.style.setProperty("--item-glow", glow.toFixed(3));
+      item.style.setProperty("--item-x", `${itemX.toFixed(1)}%`);
+      item.style.setProperty("--item-y", `${itemY.toFixed(1)}%`);
+      item.classList.toggle("is-lit", glow > 0.08);
+
+      if (glow > 0.04) isNearHeader = true;
+    });
+  };
+
+  const animate = () => {
+    currentX += (targetX - currentX) * 0.18;
+    currentY += (targetY - currentY) * 0.18;
+
+    root.style.setProperty("--mouse-x", `${currentX.toFixed(2)}px`);
+    root.style.setProperty("--mouse-y", `${currentY.toFixed(2)}px`);
+
+    illuminateMenu();
+    root.style.setProperty("--firefly-scale", isNearHeader ? "1.35" : "1");
+    document.body.classList.toggle("has-header-firefly", isNearHeader);
+    animationId = window.requestAnimationFrame(animate);
+  };
+
+  window.addEventListener("pointermove", updateTarget);
+  animationId = window.requestAnimationFrame(animate);
+
+  window.addEventListener("pagehide", () => {
+    window.cancelAnimationFrame(animationId);
+    window.removeEventListener("pointermove", updateTarget);
+  });
+}
+
 function setupPageTransitions() {
   if (reduceMotion) return;
 
@@ -905,6 +972,7 @@ window.addEventListener("DOMContentLoaded", () => {
   setupReveal();
   setupSmoothAnchors();
   setupMobileMenu();
+  setupHeaderFirefly();
   setupPageTransitions();
 
   if (isHomePage) {
