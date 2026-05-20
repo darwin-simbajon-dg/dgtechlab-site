@@ -148,7 +148,7 @@ img {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   color: #F8FAFC;
   font-size: 18px;
   font-weight: 800;
@@ -162,8 +162,8 @@ img {
 }
 
 .brand-logo-mark {
-  width: 54px;
-  height: 54px;
+  width: 58px;
+  height: 40px;
   filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.18)) saturate(1.12);
 }
 
@@ -2658,7 +2658,7 @@ body.home-page .footer {
 }
 
 .footer-brand .brand-logo-footer {
-  width: 180px;
+  width: 150px;
   height: auto;
 }
 
@@ -3400,8 +3400,8 @@ body.home-page .footer {
   }
 
   .brand-logo-mark {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 36px;
   }
 
   .menu-toggle {
