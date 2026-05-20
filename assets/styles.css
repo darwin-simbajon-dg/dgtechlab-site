@@ -3127,7 +3127,7 @@ body.home-page .footer {
 }
 
 .legal-hero {
-  padding: clamp(64px, 8vw, 96px) clamp(24px, 4vw, 48px) 40px;
+  padding: clamp(38px, 5vw, 64px) clamp(24px, 4vw, 48px) 28px;
   color: #FFFFFF;
   background:
     radial-gradient(circle at 80% 10%, rgba(99, 91, 255, 0.34), transparent 30%),
@@ -3141,8 +3141,8 @@ body.home-page .footer {
 
 .legal-page {
   max-width: 1080px;
-  margin: 32px auto clamp(64px, 8vw, 96px);
-  padding: 24px;
+  margin: 20px auto clamp(42px, 6vw, 72px);
+  padding: clamp(18px, 3vw, 22px);
   border: 1px solid var(--border);
   border-radius: 12px;
   background: linear-gradient(180deg, var(--surface-card), #F7FAFE);
