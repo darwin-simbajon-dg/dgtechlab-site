@@ -9,13 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" href="assets/images/dgtechlab-logo-header-cropped.png" as="image" type="image/png">
-    <link rel="stylesheet" href="assets/styles.css?v=logo-size">
-    <script src="assets/site.js" defer></script>
+    <link rel="stylesheet" href="assets/styles.css?v=mobile-menu">
+    <script src="assets/site.js?v=mobile-menu" defer></script>
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="DGTech Lab home"><img class="brand-logo brand-logo-mark" src="assets/images/dgtechlab-logo-header-cropped.png" alt="" decoding="async" fetchpriority="high"><span>DGTech Lab</span></a>
-      <nav class="nav" aria-label="Primary navigation">
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="primary-navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav" id="primary-navigation" aria-label="Primary navigation">
         <a href="index.html#services">Services</a>
         <a href="index.html#contact">Contact</a>
         <a href="privacy-policy.html">Privacy</a>

@@ -71,6 +71,47 @@ function setupSmoothAnchors() {
   });
 }
 
+function setupMobileMenu() {
+  const button = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+  if (!button || !nav) return;
+
+  const setOpen = (isOpen) => {
+    document.body.classList.toggle("is-menu-open", isOpen);
+    button.setAttribute("aria-expanded", String(isOpen));
+    button.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  };
+
+  button.addEventListener("click", () => {
+    setOpen(!document.body.classList.contains("is-menu-open"));
+  });
+
+  nav.addEventListener("click", (event) => {
+    if (event.target.closest("a")) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!document.body.classList.contains("is-menu-open")) return;
+    if (nav.contains(event.target) || button.contains(event.target)) return;
+    setOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setOpen(false);
+      button.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(min-width: 641px)").matches) {
+      setOpen(false);
+    }
+  });
+}
+
 function setupPageTransitions() {
   if (reduceMotion) return;
 
@@ -863,6 +904,7 @@ window.addEventListener("DOMContentLoaded", () => {
   setupEffectVisibility();
   setupReveal();
   setupSmoothAnchors();
+  setupMobileMenu();
   setupPageTransitions();
 
   if (isHomePage) {
